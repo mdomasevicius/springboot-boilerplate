@@ -1,4 +1,14 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'com.moowork.node' version '1.1.1'
+}
+
+node {
+    version = '7.9.0'
+    npmVersion = '4.6.1'
+    distBaseUrl = 'http://nodejs.org/dist'
+    download = true
+}
 
 sourceSets.main {
     resources {
@@ -6,21 +16,8 @@ sourceSets.main {
     }
 }
 
-boolean isWindows = System.getProperty('os.name').toLowerCase(Locale.ENGLISH) ==~ /win.*/
-def npmExec = isWindows ? 'npm.cmd' : 'npm'
-
-task npmInit(type: Exec) {
-    description = 'Install NPM dependencies'
-    commandLine = [npmExec, 'install']
-    inputs.files 'package.json'
-    outputs.dir 'node_modules'
-}
-
-task npmBuild(dependsOn: npmInit, type: Exec) {
-    description = 'NPM build'
-    commandLine = [npmExec, 'run', 'build']
-    inputs.dir 'src'
-    outputs.dir 'dist'
+task npmBuild(dependsOn: npm_install, type: NpmTask) {
+    args = ['run', 'build']
 }
 
 clean.doLast {

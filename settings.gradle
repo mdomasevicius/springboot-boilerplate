@@ -1,4 +1,5 @@
 rootProject.name = 'spring-boot-boilerplate'
 
+include ':acceptance'
 include ':apps:app'
 include ':apps:app-ui'

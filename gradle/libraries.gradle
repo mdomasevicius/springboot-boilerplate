@@ -1,9 +1,16 @@
 project.ext {
     groovy_version = '2.4.10'
     spring_boot_version = '1.5.3.RELEASE'
+    junit_version = '4.12'
+    spock_version = '1.0-groovy-2.4'
 }
 
 project.ext.lib = [
     groovy_core    : "org.codehaus.groovy:groovy:$groovy_version",
-    spring_boot_web: "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+    groovy_http    : 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1',
+    spring_boot_web: "org.springframework.boot:spring-boot-starter-web:$spring_boot_version",
+
+    junit                : "junit:junit:$junit_version",
+    spock_spring         : "org.spockframework:spock-spring:$spock_version",
+    spock_core           : "org.spockframework:spock-core:$spock_version"
 ]

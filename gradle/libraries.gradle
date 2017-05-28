@@ -1,0 +1,9 @@
+project.ext {
+    groovy_version = '2.4.10'
+    spring_boot_version = '1.5.3.RELEASE'
+}
+
+project.ext.lib = [
+    groovy_core    : "org.codehaus.groovy:groovy:$groovy_version",
+    spring_boot_web: "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+]
